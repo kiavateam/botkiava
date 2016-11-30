@@ -214,7 +214,7 @@ function create_config( )
     enabled_plugins = {
 	"infome",
     "badword",
-    "home-management",
+    "supergroup",
     "antiporn",
     "lang",
     "user-management",
