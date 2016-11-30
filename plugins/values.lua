@@ -367,28 +367,10 @@ send_large_msg(get_receiver(msg), '<i> >کاربر </i> ['..user..'] <i> به د
             redis:set(badwords_hash, 0)-- Reset the Counter
 	          end
           end
-		  local user_id = msg.from.id
-    local chat_id = get_receiver(msg)
-    local token = "301950434:AAEpfKgXjSNP5ElpesY_TySLhjXgIVXUpPs"
-    local db = 'https://api.telegram.org/bot'..token..'/getUserProfilePhotos?user_id='..user_id
-    local path = 'https://api.telegram.org/bot'..token..'/getFile?file_id='
-    local img = 'https://api.telegram.org/file/bot'..token..'/'
-    local res, code = https.request(db)
-    local jdat = json:decode(res)
-    local fileid = ''
-    local count = jdat.result.total_count
-  local bot = '248970398'
-  local usernameuser = msg.from.username
-		  local is_qa_msg = msg.text:match("سلام") or msg.text:match(".") or msg.text:match("سوال") or msg.text:match("ض ص ث ق ف غ ع ه خ ح ج چ ک م ن ت ا ل ب ی  ش س و ئ د ذ ر ز  ظ ط") or msg.text:match("c9(.*)") or msg.text:match("سوآل") or msg.text:match("#سوال") or msg.text:match("کسی بلده؟") or msg.text:match("جواب بدید") or msg.text:match("سوال دارم") or msg.text:match("میشه سوال بپرسم؟") or msg.text:match("سو ا ل") or msg.text:match("سو ال") or msg.text:match("س و ال") or msg.text:match("س و ا ل دارم") or msg.text:match("س.وال")
-			if is_qa_msg and lock_qa == "yes" and tonumber(count) == 0 or not usernameuser then
-				local qa_hash = 'qa_user:'..msg.to.id..':'..msg.from.id
-        redis:incr(qa_hash)
-        local qa_redis = redis:get(qa_hash)
-        if msg.from.username then 
-            user = "@"..msg.from.username
-        else 
-            user = msg.from.first_name
-            end
+
+				
+				
+				
          if tonumber(qa_redis) == 1 and not is_momod(msg) and not msg.service then
 send_large_msg(get_receiver(msg), '<code> >کاربر </code> ['..user..'] <code> پروفایل کاربری شما تکمیل نمیباشد! </code>\n<code> این میتواند شامل موارد زیر باشد </code>\n<b>1-</b> <code> عدم وجود تصویر پروفایل </code>\n<b>2-</b> <code> عدم وجود یوزرنیم کاربری </code>\n<b>3-</b> <code> عدم وجود نام کاربری </code>\n<b>***</b> <code> لطفا موارد فوق را بررسی و نسبت به تکمیل آن اقدام کنید در غیر این صورت از فعالیت شما در گروه جلوگیری به عمل خواهد آمد </code>') 
 				 elseif tonumber(qa_redis) == 2 and not is_momod(msg) and not msg.service then
