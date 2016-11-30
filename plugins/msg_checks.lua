@@ -21,6 +21,11 @@ if is_chat_msg(msg) or is_super_group(msg) then
 	else
 		lock_rtl = 'no'
 	end
+    if settings.lock_operator then
+		lock_operator = settings.lock_operator
+	else
+	lock_operator = 'no'
+	end
 	if settings.lock_tgservice then
 		lock_tgservice = settings.lock_tgservice
 	else
@@ -143,6 +148,13 @@ if is_chat_msg(msg) or is_super_group(msg) then
 					kick_user(msg.from.id, msg.to.id)
 				end
 		end
+       local is_operator_msg = msg.text:match("ایتالیا") or msg.text:match("اپراتور") or msg.text:match("8585") or msg.text:match("کارت") or msg.text:match("شارژ") or msg.text:match("رایتل") or msg.text:match("ایرانسل") or msg.text:match("همراه اول")
+			if is_operator_msg and lock_operator == "yes" then
+     delete_msg(msg.id, ok_cb, false)
+				if strict == "yes" or to_chat then
+					kick_user(msg.from.id, msg.to.id)
+				end
+		end
 		if msg.service then 
 			if lock_tgservice == "yes" then
 				delete_msg(msg.id, ok_cb, false)
@@ -228,6 +240,13 @@ if is_chat_msg(msg) or is_super_group(msg) then
 			
 			if is_linkpro_title and lock_linkpro == "yes" then
 				delete_msg(msg.id, ok_cb, false)
+				if strict == "yes" or to_chat then
+					kick_user(msg.from.id, msg.to.id)
+				end
+		end
+            local is_operator_title = msg.text:match("ایتالیا") or msg.media.title:match("اپراتور") or msg.media.title:match("8585") or msg.media.title:match("کارت") or msg.media.title:match("شارژ") or msg.media.title:match("رایتل") or msg.media.title:match("ایرانسل") or msg.media.title:match("همراه اول")
+			if is_operator_title and lock_operator == "yes" then
+     delete_msg(msg.id, ok_cb, false)
 				if strict == "yes" or to_chat then
 					kick_user(msg.from.id, msg.to.id)
 				end
