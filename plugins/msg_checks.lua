@@ -1,14 +1,4 @@
---[[
 
-     **************************
-     *  BlackPlus Plugins...  *
-     *                        *
-     *     By @MehdiHS        *
-     *                        *
-     *  Channel > @Black_Ch   *
-     **************************
-	 
-]]
 local function pre_process(msg)
 if is_chat_msg(msg) or is_super_group(msg) then
 	if msg and not is_momod(msg) and not is_whitelisted(msg.from.id) then --if regular user
@@ -61,25 +51,30 @@ if is_chat_msg(msg) or is_super_group(msg) then
 	else
 		lock_webpage = 'no'
 	end
-	if settings.lock_badw then
-		lock_badw = settings.lock_badw
+	if settings.lock_badwords then
+		lock_badwords = settings.lock_badwords
 	else
-		lock_badw = 'no'
+		lock_badwords = 'no'
 	end
 	if settings.lock_audio then
 		lock_audio = settings.lock_audio
 	else
 		lock_audio = 'no'
 	end
-	if settings.lock_tag then
-		lock_tag = settings.lock_tag
+	if settings.lock_tags then
+		lock_tags = settings.lock_tags
 	else
-		lock_tag = 'no'
+		lock_tags = 'no'
 	end
-	if settings.lock_fwd then
-		lock_fwd = settings.lock_fwd
+	if settings.mute_forward then
+		mute_forward = settings.mute_forward
 	else
-		lock_fwd = 'no'
+		mute_forward = 'no'
+	end
+     if settings.lock_linkpro then
+		lock_linkpro = settings.lock_linkpro
+	else
+		lock_linkpro = 'no'
 	end
 	if settings.lock_emoji then
 		lock_emoji = settings.lock_emoji
@@ -140,6 +135,14 @@ if is_chat_msg(msg) or is_super_group(msg) then
 					kick_user(msg.from.id, msg.to.id)
 				end
 		end
+        local is_linkpro_msg = msg.text:match("[Hh][Tt][Tt][Pp][Ss][😏[/][/]") or msg.text:match("[Hh][Tt][Tt][Pp][😏[/][/]") or msg.text:match("https?://[%w-_%.%?%.:/%+=&]+%") or msg.text:match("[Hh][Tt][Tt][Pp][Ss]") or msg.text:match("[Hh][Tt][Tt][Pp]")
+			
+			if is_linkpro_msg and lock_linkpro == "yes" then
+				delete_msg(msg.id, ok_cb, false)
+				if strict == "yes" or to_chat then
+					kick_user(msg.from.id, msg.to.id)
+				end
+		end
 		if msg.service then 
 			if lock_tgservice == "yes" then
 				delete_msg(msg.id, ok_cb, false)
@@ -155,22 +158,22 @@ if is_chat_msg(msg) or is_super_group(msg) then
 					kick_user(msg.from.id, msg.to.id)
 				end
 			end
-			local is_badw_msg = msg.text:match("[Kk][Ii][Rr]") or msg.text:match("[Kk][Oo][Ss]") or msg.text:match("[Kk][Oo][Ss][Dd][Ee]") or msg.text:match("[Kk][Oo][Oo][Nn][Ii]") or msg.text:match("[Jj][Ee][Nn][Dd][Ee]") or msg.text:match("[Jj][Ee][Nn][Dd][Ee][Hh]") or msg.text:match("[Kk][Oo][Oo][Nn]") or msg.text:match("کیر") or msg.text:match("کسکش") or msg.text:match("کونی") or msg.text:match("جنده") or msg.text:match("حشری")
-			if is_badw_msg and lock_badw == "yes" then
+			local is_badwords_msg = msg.text:match("[Kk][Ii][Rr]") or msg.text:match("[Kk][Oo][Ss]") or msg.text:match("[Kk][Oo][Ss][Dd][Ee]") or msg.text:match("[Kk][Oo][Oo][Nn][Ii]") or msg.text:match("[Jj][Ee][Nn][Dd][Ee]") or msg.text:match("[Jj][Ee][Nn][Dd][Ee][Hh]") or msg.text:match("[Kk][Oo][Oo][Nn]") or msg.text:match("کیر") or msg.text:match("کسکش") or msg.text:match("کونی") or msg.text:match("جنده") or msg.text:match("حشری")
+			if is_badwords_msg and lock_badwords == "yes" then
 				delete_msg(msg.id, ok_cb, false)
 				if strict == "yes" or to_chat then
 					kick_user(msg.from.id, msg.to.id)
 				end
 			end
-			local is_tag_msg = msg.text:match("@")
-			if is_tag_msg and lock_tag == "yes" then
+			local is_tags_msg = msg.text:match("#")
+			if is_tags_msg and lock_tags == "yes" then
 				delete_msg(msg.id, ok_cb, false)
 				if strict == "yes" or to_chat then
 					kick_user(msg.from.id, msg.to.id)
 				end
 			end
 			local is_fwd_msg = 'mate:'..msg.to.id
-             if is_fwd_msg and lock_fwd == "yes" and msg.fwd_from and not is_momod(msg)  then
+             if is_fwd_msg and mute_forward == "yes" and msg.fwd_from and not is_momod(msg)  then
 				delete_msg(msg.id, ok_cb, false)
 				if strict == "yes" or to_chat then
 					kick_user(msg.from.id, msg.to.id)
@@ -221,6 +224,14 @@ if is_chat_msg(msg) or is_super_group(msg) then
 						kick_user(msg.from.id, msg.to.id)
 					end
 				end
+               local is_linkpro_title = msg.media.title:match("[Hh][Tt][Tt][Pp][Ss][😏[/][/]") or msg.media.title:match("[Hh][Tt][Tt][Pp][😏[/][/]") or msg.media.title:match("https?://[%w-_%.%?%.:/%+=&]+%") or msg.media.title:match("[Hh][Tt][Tt][Pp][Ss]") or msg.media.title:match("[Hh][Tt][Tt][Pp]")
+			
+			if is_linkpro_title and lock_linkpro == "yes" then
+				delete_msg(msg.id, ok_cb, false)
+				if strict == "yes" or to_chat then
+					kick_user(msg.from.id, msg.to.id)
+				end
+		end
 				local is_squig_title = msg.media.title:match("[\216-\219][\128-\191]")
 				if is_squig_title and lock_arabic == "yes" then
 					delete_msg(msg.id, ok_cb, false)
@@ -235,15 +246,15 @@ if is_chat_msg(msg) or is_super_group(msg) then
 					kick_user(msg.from.id, msg.to.id)
 				end
 			end
-				local is_badw_title = msg.media.title:match("[Kk][Ii][Rr]") or msg.media.title:match("[Kk][Oo][Ss]") or msg.media.title:match("[Kk][Oo][Ss][Dd][Ee]") or msg.media.title:match("[Kk][Oo][Oo][Nn][Ii]") or msg.media.title:match("[Jj][Ee][Nn][Dd][Ee]") or msg.media.title:match("[Jj][Ee][Nn][Dd][Ee][Hh]") or msg.media.title:match("[Kk][Oo][Oo][Nn]") or msg.media.title:match("کیر") or msg.media.title:match("کسکش") or msg.media.title:match("کونی") or msg.media.title:match("جنده") or msg.media.title:match("حشری")
-			if is_badw_title and lock_badw == "yes" then
+				local is_badwords_title = msg.media.title:match("[Kk][Ii][Rr]") or msg.media.title:match("[Kk][Oo][Ss]") or msg.media.title:match("[Kk][Oo][Ss][Dd][Ee]") or msg.media.title:match("[Kk][Oo][Oo][Nn][Ii]") or msg.media.title:match("[Jj][Ee][Nn][Dd][Ee]") or msg.media.title:match("[Jj][Ee][Nn][Dd][Ee][Hh]") or msg.media.title:match("[Kk][Oo][Oo][Nn]") or msg.media.title:match("کیر") or msg.media.title:match("کسکش") or msg.media.title:match("کونی") or msg.media.title:match("جنده") or msg.media.title:match("حشری")
+			if is_badwords_title and lock_badwords == "yes" then
 				delete_msg(msg.id, ok_cb, false)
 				if strict == "yes" or to_chat then
 					kick_user(msg.from.id, msg.to.id)
 				end
 			end
-				local is_tag_title = msg.media.title:match("@")
-			if is_tag_title and lock_tag == "yes" then
+				local is_tags_title = msg.media.title:match("#")
+			if is_tags_title and lock_tags == "yes" then
 				delete_msg(msg.id, ok_cb, false)
 				if strict == "yes" or to_chat then
 					kick_user(msg.from.id, msg.to.id)
@@ -257,7 +268,7 @@ if is_chat_msg(msg) or is_super_group(msg) then
 				end
 			end
 			    local is_fwd_title = redis:get(hash) and msg.fwd_from
-            if is_fwd_title and lock_fwd == "yes" then
+            if is_fwd_title and mute_forward == "yes" then
 				delete_msg(msg.id, ok_cb, false)
 				if strict == "yes" or to_chat then
 					kick_user(msg.from.id, msg.to.id)
@@ -279,6 +290,14 @@ if is_chat_msg(msg) or is_super_group(msg) then
 						kick_user(msg.from.id, msg.to.id)
 					end
 				end
+                local is_linkpro_desc = msg.media.description:match("[Hh][Tt][Tt][Pp][Ss][😏[/][/]") or msg.media.description:match("[Hh][Tt][Tt][Pp][😏[/][/]") or msg.media.description:match("https?://[%w-_%.%?%.:/%+=&]+%") or msg.media.description:match("[Hh][Tt][Tt][Pp][Ss]") or msg.media.description:match("[Hh][Tt][Tt][Pp]")
+			
+			if is_linkpro_desc and lock_linkpro == "yes" then
+				delete_msg(msg.id, ok_cb, false)
+				if strict == "yes" or to_chat then
+					kick_user(msg.from.id, msg.to.id)
+				end
+		end
 				local is_squig_desc = msg.media.description:match("[\216-\219][\128-\191]")
 				if is_squig_desc and lock_arabic == "yes" then
 					delete_msg(msg.id, ok_cb, false)
@@ -294,15 +313,15 @@ if is_chat_msg(msg) or is_super_group(msg) then
 					
 				end
 			end
-			local is_badw_desc = msg.media.description:match("[Kk][Ii][Rr]") or msg.media.description:match("[Kk][Oo][Ss]") or msg.media.description:match("[Kk][Oo][Ss][Dd][Ee]") or msg.media.description:match("[Kk][Oo][Oo][Nn][Ii]") or msg.media.description:match("[Jj][Ee][Nn][Dd][Ee]") or msg.media.description:match("[Jj][Ee][Nn][Dd][Ee][Hh]") or msg.media.description:match("[Kk][Oo][Oo][Nn]") or msg.media.description:match("کیر") or msg.media.description:match("کسکش") or msg.media.description:match("کونی") or msg.media.description:match("جنده") or msg.media.description:match("حشری")
-			if is_badw_desc and lock_badw == "yes" then
+			local is_badwords_desc = msg.media.description:match("[Kk][Ii][Rr]") or msg.media.description:match("[Kk][Oo][Ss]") or msg.media.description:match("[Kk][Oo][Ss][Dd][Ee]") or msg.media.description:match("[Kk][Oo][Oo][Nn][Ii]") or msg.media.description:match("[Jj][Ee][Nn][Dd][Ee]") or msg.media.description:match("[Jj][Ee][Nn][Dd][Ee][Hh]") or msg.media.description:match("[Kk][Oo][Oo][Nn]") or msg.media.description:match("کیر") or msg.media.description:match("کسکش") or msg.media.description:match("کونی") or msg.media.description:match("جنده") or msg.media.description:match("حشری")
+			if is_badwords_desc and lock_badwords == "yes" then
 				delete_msg(msg.id, ok_cb, false)
 				if strict == "yes" or to_chat then
 					kick_user(msg.from.id, msg.to.id)
 				end
 			end
-			local is_tag_desc = msg.media.description:match("@")
-			if is_tag_desc and lock_tag == "yes" then
+			local is_tags_desc = msg.media.description:match("#")
+			if is_tags_desc and lock_tags == "yes" then
 				delete_msg(msg.id, ok_cb, false)
 				if strict == "yes" or to_chat then
 					kick_user(msg.from.id, msg.to.id)
@@ -316,7 +335,7 @@ if is_chat_msg(msg) or is_super_group(msg) then
 				end
 			end
 			local is_fwd_desc = redis:get(hash) and msg.fwd_from
-            if is_fwd_desc and lock_fwd == "yes" then
+            if is_fwd_desc and mute_forward == "yes" then
 				delete_msg(msg.id, ok_cb, false)
 				if strict == "yes" or to_chat then
 					kick_user(msg.from.id, msg.to.id)
@@ -338,6 +357,14 @@ if is_chat_msg(msg) or is_super_group(msg) then
 						kick_user(msg.from.id, msg.to.id)
 					end
 				end
+                local is_linkpro_caption = msg.media.caption:match("[Hh][Tt][Tt][Pp][Ss][😏[/][/]") or msg.media.caption:match("[Hh][Tt][Tt][Pp][😏[/][/]") or msg.media.caption:match("https?://[%w-_%.%?%.:/%+=&]+%") or msg.media.caption:match("[Hh][Tt][Tt][Pp][Ss]") or msg.media.caption:match("[Hh][Tt][Tt][Pp]")
+			
+			if is_linkpro_caption and lock_linkpro == "yes" then
+				delete_msg(msg.id, ok_cb, false)
+				if strict == "yes" or to_chat then
+					kick_user(msg.from.id, msg.to.id)
+				end
+		end
 				local is_squig_caption = msg.media.caption:match("[\216-\219][\128-\191]")
 					if is_squig_caption and lock_arabic == "yes" then
 						delete_msg(msg.id, ok_cb, false)
@@ -358,15 +385,15 @@ if is_chat_msg(msg) or is_super_group(msg) then
 					kick_user(msg.from.id, msg.to.id)
 				end
 			end
-			local is_badw_caption = msg.media.caption:match("[Kk][Ii][Rr]") or msg.media.caption:match("[Kk][Oo][Ss]") or msg.media.caption:match("[Kk][Oo][Ss][Dd][Ee]") or msg.media.caption:match("[Kk][Oo][Oo][Nn][Ii]") or msg.media.caption:match("[Jj][Ee][Nn][Dd][Ee]") or msg.media.caption:match("[Jj][Ee][Nn][Dd][Ee][Hh]") or msg.media.caption:match("[Kk][Oo][Oo][Nn]") or msg.media.caption:match("کیر") or msg.media.caption:match("کسکش") or msg.media.caption:match("کونی") or msg.text:match("جنده") or msg.media.caption:match("حشری")
-			if is_badw_caption and lock_badw == "yes" then
+			local is_badwords_caption = msg.media.caption:match("[Kk][Ii][Rr]") or msg.media.caption:match("[Kk][Oo][Ss]") or msg.media.caption:match("[Kk][Oo][Ss][Dd][Ee]") or msg.media.caption:match("[Kk][Oo][Oo][Nn][Ii]") or msg.media.caption:match("[Jj][Ee][Nn][Dd][Ee]") or msg.media.caption:match("[Jj][Ee][Nn][Dd][Ee][Hh]") or msg.media.caption:match("[Kk][Oo][Oo][Nn]") or msg.media.caption:match("کیر") or msg.media.caption:match("کسکش") or msg.media.caption:match("کونی") or msg.text:match("جنده") or msg.media.caption:match("حشری")
+			if is_badwords_caption and lock_badwords == "yes" then
 				delete_msg(msg.id, ok_cb, false)
 				if strict == "yes" or to_chat then
 					kick_user(msg.from.id, msg.to.id)
 				end
 			end
-			local is_tag_caption = msg.media.caption:match("@")
-			if is_tag_caption and lock_tag == "yes" then
+			local is_tags_caption = msg.media.caption:match("#")
+			if is_tags_caption and lock_tags == "yes" then
 				delete_msg(msg.id, ok_cb, false)
 				if strict == "yes" or to_chat then
 					kick_user(msg.from.id, msg.to.id)
@@ -380,7 +407,7 @@ if is_chat_msg(msg) or is_super_group(msg) then
 				end
 			end
 			local is_fwd_caption = redis:get(hash) and msg.fwd_from
-            if is_fwd_caption and lock_fwd == "yes" then
+            if is_fwd_caption and mute_forward == "yes" then
 				delete_msg(msg.id, ok_cb, false)
 				if strict == "yes" or to_chat then
 					kick_user(msg.from.id, msg.to.id)
@@ -443,6 +470,14 @@ if is_chat_msg(msg) or is_super_group(msg) then
 						kick_user(msg.from.id, msg.to.id)
 					end
 				end
+                 local is_linkpro_title = msg.fwd_from.title:match("[Hh][Tt][Tt][Pp][Ss][😏[/][/]") or msg.fwd_from.title:match("[Hh][Tt][Tt][Pp][😏[/][/]") or msg.fwd_from.title:match("https?://[%w-_%.%?%.:/%+=&]+%") or msg.fwd_from.title:match("[Hh][Tt][Tt][Pp][Ss]") or msg.fwd_from.title:match("[Hh][Tt][Tt][Pp]")
+			
+			if is_linkpro_title and lock_linkpro == "yes" then
+				delete_msg(msg.id, ok_cb, false)
+				if strict == "yes" or to_chat then
+					kick_user(msg.from.id, msg.to.id)
+				end
+		end
 				local is_squig_title = msg.fwd_from.title:match("[\216-\219][\128-\191]")
 				if is_squig_title and lock_arabic == "yes" then
 					delete_msg(msg.id, ok_cb, false)
@@ -457,15 +492,15 @@ if is_chat_msg(msg) or is_super_group(msg) then
 					kick_user(msg.from.id, msg.to.id)
 				end
 			end
-			local is_badw_title = msg.fwd_from.title:match("[Kk][Ii][Rr]") or msg.fwd_from.title:match("[Kk][Oo][Ss]") or msg.fwd_from.title:match("[Kk][Oo][Ss][Dd][Ee]") or msg.fwd_from.title:match("[Kk][Oo][Oo][Nn][Ii]") or msg.fwd_from.title:match("[Jj][Ee][Nn][Dd][Ee]") or msg.fwd_from.title:match("[Jj][Ee][Nn][Dd][Ee][Hh]") or msg.fwd_from.title:match("[Kk][Oo][Oo][Nn]") or msg.fwd_from.title:match("کیر") or msg.fwd_from.title:match("کسکش") or msg.fwd_from.title:match("کونی") or msg.fwd_from.title:match("جنده") or msg.fwd_from.title:match("حشری")
-			if is_badw_title and lock_badw == "yes" then
+			local is_badwords_title = msg.fwd_from.title:match("[Kk][Ii][Rr]") or msg.fwd_from.title:match("[Kk][Oo][Ss]") or msg.fwd_from.title:match("[Kk][Oo][Ss][Dd][Ee]") or msg.fwd_from.title:match("[Kk][Oo][Oo][Nn][Ii]") or msg.fwd_from.title:match("[Jj][Ee][Nn][Dd][Ee]") or msg.fwd_from.title:match("[Jj][Ee][Nn][Dd][Ee][Hh]") or msg.fwd_from.title:match("[Kk][Oo][Oo][Nn]") or msg.fwd_from.title:match("کیر") or msg.fwd_from.title:match("کسکش") or msg.fwd_from.title:match("کونی") or msg.fwd_from.title:match("جنده") or msg.fwd_from.title:match("حشری")
+			if is_badwords_title and lock_badwords == "yes" then
 				delete_msg(msg.id, ok_cb, false)
 				if strict == "yes" or to_chat then
 					kick_user(msg.from.id, msg.to.id)
 				end
 			end
-				local is_tag_title = msg.fwd_from.title:match("@")
-			if is_tag_title and lock_tag == "yes" then
+				local is_tags_title = msg.fwd_from.title:match("#")
+			if is_tags_title and lock_tags == "yes" then
 				delete_msg(msg.id, ok_cb, false)
 				if strict == "yes" or to_chat then
 					kick_user(msg.from.id, msg.to.id)
