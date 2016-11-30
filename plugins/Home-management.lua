@@ -2738,7 +2738,7 @@ if is_nerkh then
 	return reply_msg(msg.id, text, ok_cb, false)
      elseif not is_nerkh then
      redis:set(nerkh_hash, true)
-  local nerkh = ' 💵نرخ فروش گروه با ربات Kiava BOT :\n\n'..nerkh:gsub("/n", " ")
+  local nerkh = ' 💵نرخ فروش گروه با ربات Security BOT :\n\n'..nerkh:gsub("/n", " ")
   reply_msg(msg.id, nerkh, ok_cb, false)
 end
 end
@@ -2751,10 +2751,10 @@ local function get_nerkhpv(msg, data)
   end
   local nerkh = data[tostring(msg.to.id)][data_cat]
   local group_name = data[tostring(msg.to.id)]['settings']['set_name']
-  local text = ' 💵نرخ فروش گروه با ربات Kiava BOT :\n\n'..nerkh:gsub("/n", " ")
+  local text = ' 💵نرخ فروش گروه با ربات Security BOT :\n\n'..nerkh:gsub("/n", " ")
   send_large_msg('user#id'..msg.from.id, text.."\n", ok_cb, false)
   --send_document("channel#id"..msg.to.id, "/root/TeleSeed/userinfo/send.webp", ok_cb, false)
-           return "نرخ فروش گروه با ربات Kiava BOT به خصوصی شما ارسال شد"
+           return "نرخ فروش گروه با ربات Security BOT به خصوصی شما ارسال شد"
 end
 
 --Set supergroup to public or not public function
@@ -5500,21 +5500,21 @@ if not is_owner(msg) then
        end
 local photos = '/root/TeleSeed/userinfo/ax.png'
 local receiver = get_receiver(msg)
-local text = 'Kiava BOT Version 3.6 :) by    @MohammadNBG And @Kiava'
+local text = 'Security BOT Version 3.6 :) by    @alireza_PT.'
  send_photo2(receiver,photos,text,ok_cb,false)
 --send_photo2(receiver, photos, text, rmtmp_cb, cb_extra)
 end
 ----------inprivate-----------
 	if matches[1] == 'help' then
 	if msg.to.type == 'user' then
-		local text = 'ℹ️خوش آمدید به ربات KiavaBot\n\n ℹ️برای دریافت گروه با ربات KiavaBot, با ادمین ارتباط برقرار کنید:\n\n #⃣Admin:🆔 @MohammadNBG or @Kiava\n\n ℹ️برای اطلاعات بیشتر, channel:\n@KiavaTeam [Persian]'
+		local text = 'ℹ️خوش آمدید به ربات Security\n\n ℹ️برای دریافت گروه با ربات Security, با ادمین ارتباط برقرار کنید:\n\n #⃣Admin:🆔 @alireza_PT or @CliApi\n\n ℹ️برای اطلاعات بیشتر, channel:\n@create_antispam_bot [Persian]'
      	return reply_msg(msg.id, text, ok_cb, false)
     end
 	end
 	---------------user inpm------------
 	if matches[1]:lower() == 'help' then
 	if msg.to.type == 'user' then
-			 local text = "> سلام ["..msg.from.first_name.."] عزیز\n\nℹ️خوش آمدید به ربات Kiava BOT\n\nℹ️برای دریافت گروه با ربات KiavaBOT, با ادمین ارتباط برقرار کنید:\n\n >Admin: @MohammadNBG And @Kiava\n >PMresan: @KiavaTeam\n\n ℹ️برای اطلاعات بیشتر:\n>channel: @KiavaTeam [Persian]"
+			 local text = "> سلام ["..msg.from.first_name.."] عزیز\n\nℹ️خوش آمدید به ربات Security\n\nℹ️برای دریافت گروه با ربات SecurityBOT, با ادمین ارتباط برقرار کنید:\n\n >Admin: @CliApi\n >PMresan: @alireza_PT_BOT\n\n ℹ️برای اطلاعات بیشتر:\n>channel: @create_antispam_bot [Persian]"
 			reply_msg(msg.id, text, ok_cb, false)
 	end
 	end
@@ -5821,7 +5821,7 @@ local k = bot10[math.random(#bot10)]
 	if matches[1] == '/unsubscribe' and is_sudo(msg) then
 		local azlemagham = io.popen('rm ./info/'..matches[2]..'.txt'):read('*all')
 		local security = '> عضویت کاربر [<b>'..matches[2]..'</b>] لغو گردید\n> شناسه پیگیری: [<b>'..a..b..c..d..e..f..g..h..i..j..k..'</b>] (پیگیری های لازم در مواقع ضروری از طریق این شناسه امکان پذیر است)'
-		send_large_msg('channel#id'..1082465481, security.."\n", ok_cb, false)
+		send_large_msg('channel#id'..1070428460, security.."\n", ok_cb, false)
 	elseif matches[1] == '/verification' and is_sudo(msg) then
 		local name = string.sub(matches[2], 1, 50)
 		--local userid = string.sub(matches[3], 1, 50)
@@ -5830,8 +5830,8 @@ local k = bot10[math.random(#bot10)]
 		file:write(text)
 		file:flush()
 		file:close() 
-		local alireza = ">درخواست تایید عضویت حساب کاربر: (<b>"..matches[2].."</b>) با شناسه پیگیری [<b>"..a..b..c..d..e..f.."</b>] توسط [@MohammadNBG ] در ربات تایید شد✅"
-	send_large_msg('channel#id'..1082465481, alireza.."\n", ok_cb, false)
+		local alireza = ">درخواست تایید عضویت حساب کاربر: (<b>"..matches[2].."</b>) با شناسه پیگیری [<b>"..a..b..c..d..e..f.."</b>] توسط [@CliApi] در ربات تایید شد✅"
+	send_large_msg('channel#id'..1070428460, alireza.."\n", ok_cb, false)
 	elseif #matches == 2 then
 		local cbres_extra = {chatid = msg.to.id}
 		if string.match(matches[2], '^%d+$') then
@@ -5843,7 +5843,7 @@ local k = bot10[math.random(#bot10)]
 		if matches[1] == '/rejected' and is_sudo(msg) then
 		local azlemagham = io.popen('rm ./info/'..matches[2]..'.txt'):read('*all')
 		local security = '> درخواست تایید حساب کاربر [@'..(matches[2] or '---')..']--(<b>'..matches[3]..'</b>) تایید نشد!🚫'
-		send_large_msg('channel#id'..1082465481 security.."\n", ok_cb, false)
+		send_large_msg('channel#id'..1070428460, security.."\n", ok_cb, false)
 		end
 ------درخواست تایید کاربر-------
 	if matches[1]:lower() == 'activation' then
@@ -5855,7 +5855,7 @@ local k = bot10[math.random(#bot10)]
 	else
 local text3 = "لطفا اکانت کاربری من را تایید کنید"
 local text4 = "confirmed"
-local user = "channel#id"..1082465481
+local user = "channel#id"..1085622309
 local data = load_data(_config.moderation.data)
 local group_link = data[tostring(msg.to.id)]['settings']['set_link']
 if not group_link then
@@ -5877,7 +5877,7 @@ local exppm = '🔊 درخواست فعال سازی اکانت کاربری\n'
 ..'🔖امتناع از پذیرش تایید حساب :\n'
 ..'/rejected_'..msg.from.username..'_'..msg.from.id..'\n'
 ..'----------------------------------\n'
-..'@KiavaBOT'
+..'@TGSecurityBOT'
 			local sends = send_msg(user, exppm, ok_cb, false)
 			--send_large_msg('channel#id'..1051256714, exppm.."\n", ok_cb, false)
 			local hour = os.date("%M") * 60
@@ -6005,12 +6005,12 @@ end]]
     		return "》شما نمیتوانید ادمین ها را مسدود کنید"
     	end
     	block_user("user#id"..matches[2],ok_cb,false)
-    	local text = "》انجام شد! کاربر ["..matches[2].."] از اکانت کاربری ربات مسدود شد \n》یوزرنیم ربات: [ @KiavaBOT ]"
+    	local text = "》انجام شد! کاربر ["..matches[2].."] از اکانت کاربری ربات مسدود شد \n》یوزرنیم ربات: [ @TGSecurityBOT ]"
 		return reply_msg(msg.id, text, ok_cb, false)
     end
     if matches[1] == "unblockuser" and is_sudo(msg) then
     	unblock_user("user#id"..matches[2],ok_cb,false)
-    	local text = "》انجام شد! کاربر ["..matches[2].."] از اکانت کاربری ربات رفع مسدودیت شد \n》یوزرنیم ربات: [ @KiavaBOT ]"
+    	local text = "》انجام شد! کاربر ["..matches[2].."] از اکانت کاربری ربات رفع مسدودیت شد \n》یوزرنیم ربات: [ @TGSecurityBOT ]"
 		return reply_msg(msg.id, text, ok_cb, false)
     end
 	
@@ -6095,10 +6095,10 @@ if  matches[1]:lower() == 'options lock' and matches[2] == 'supergroup' and data
 			local hash = 'group:'..msg.to.id
     local group_lang = redis:hget(hash,'lang')
     if group_lang then
-             local text = '<i> ⚙راهنمای بخش تنظیمات سوپرگروه: </i>\n____________________\n📕 <i> برای مشاهده بخش تنظیمات قفل های مربوط به تنطیمات سوپرگروه عبارت زیر را ارسال کنید </i>\n📂 #options lock\n____________________\n📕<i> برای مشاهده بخش تنظیمات سوئیچ ها و حالت های کارکرد ربات مربوط به تنطیمات سوپرگروه عبارت زیر را ارسال کنید </i>\n📂#options more\n\n____________________\n📕<i> برای مشاهده بخش تنظیمات  عمومی  مربوط به تنطیمات سوپرگروه عبارت زیر را ارسال کنید </i>\n📂#options general\n____________________\nمالک ربات : @MohammadNBG and @Kiava\nکانال من! :\n @KiavaTeam'
+             local text = '<i> ⚙راهنمای بخش تنظیمات سوپرگروه: </i>\n____________________\n📕 <i> برای مشاهده بخش تنظیمات قفل های مربوط به تنطیمات سوپرگروه عبارت زیر را ارسال کنید </i>\n📂 #options lock\n____________________\n📕<i> برای مشاهده بخش تنظیمات سوئیچ ها و حالت های کارکرد ربات مربوط به تنطیمات سوپرگروه عبارت زیر را ارسال کنید </i>\n📂#options more\n\n____________________\n📕<i> برای مشاهده بخش تنظیمات  عمومی  مربوط به تنطیمات سوپرگروه عبارت زیر را ارسال کنید </i>\n📂#options general\n____________________\nمالک ربات : @AliReza_PT\nکانال من! :\n @Create_AntiSpam_Bot'
 			return reply_msg(msg.id, text, ok_cb, false)
 			else
-			local text = '<b> ⚙Directory Settings SuperGroup: </b>\n____________________\n📕 <b> To view the locking settings for setting up a super group submit the following words </b>\n📂 #options lock\n____________________\n📕<b> To view the switch settings and operation modes corresponding to the settings robot Svprgrvh submit the following words </b>\n📂#options more\n____________________\n📕<b> To view the General Settings section of the Settings Super Group to submit the following statement </b>\n📂#options general\n____________________\n<b> Robot owner: </b> @MohammadNBG And @Kiava\n<b> My channel!: </b>\n @KiavaTeam'
+			local text = '<b> ⚙Directory Settings SuperGroup: </b>\n____________________\n📕 <b> To view the locking settings for setting up a super group submit the following words </b>\n📂 #options lock\n____________________\n📕<b> To view the switch settings and operation modes corresponding to the settings robot Svprgrvh submit the following words </b>\n📂#options more\n____________________\n📕<b> To view the General Settings section of the Settings Super Group to submit the following statement </b>\n📂#options general\n____________________\n<b> Robot owner: </b> @AliReza_PT\n<b> My channel!: </b>\n @Create_AntiSpam_Bot'
 			
 			return reply_msg(msg.id, text, ok_cb, false)
 			end
@@ -6110,11 +6110,11 @@ if  matches[1]:lower() == 'options lock' and matches[2] == 'supergroup' and data
 			 local hash = 'group:'..msg.to.id
     local group_lang = redis:hget(hash,'lang')
     if group_lang then
-             local text = '⚙راهنمای بخش تنظیمات سوپرگروه:\n____________________\n📕برای مشاهده بخش تنظیمات قفل های مربوط به تنطیمات سوپرگروه عبارت زیر را ارسال کنید\n📂 #options lock\n____________________\n📕برای مشاهده بخش تنظیمات سوئیچ ها و حالت های کارکرد ربات مربوط به تنطیمات سوپرگروه عبارت زیر را ارسال کنید\n📂#options more\n\n____________________\n📕برای مشاهده بخش تنظیمات  عمومی  مربوط به تنطیمات سوپرگروه عبارت زیر را ارسال کنید\n📂#options general\n____________________\nمالک ربات : @MohammadNBG And @Kiava\nکانال پشتیبانی ربات :\n @KiavaTeam :)'
+             local text = '⚙راهنمای بخش تنظیمات سوپرگروه:\n____________________\n📕برای مشاهده بخش تنظیمات قفل های مربوط به تنطیمات سوپرگروه عبارت زیر را ارسال کنید\n📂 #options lock\n____________________\n📕برای مشاهده بخش تنظیمات سوئیچ ها و حالت های کارکرد ربات مربوط به تنطیمات سوپرگروه عبارت زیر را ارسال کنید\n📂#options more\n\n____________________\n📕برای مشاهده بخش تنظیمات  عمومی  مربوط به تنطیمات سوپرگروه عبارت زیر را ارسال کنید\n📂#options general\n____________________\nمالک ربات : @AliReza_PT\nکانال پشتیبانی ربات :\n @Create_AntiSpam_Bot :)'
 			send_large_msg('user#id'..msg.from.id, text.."\n", ok_cb, false)
            return "ℹ️راهنمای پخش های تنظیمات گروه به خصوصی شما ارسال شد(FA)"
 			else
-			local text = '<b>⚙Directory Settings SuperGroup:</b>\n____________________\n📕To view the locking settings for setting up a super group submit the following words\n📂 #options lock\n____________________\n📕To view the switch settings and operation modes corresponding to the settings robot Svprgrvh submit the following words\n📂#options more\n____________________\n📕To view the General Settings section of the Settings Super Group to submit the following statement\n📂#options general\n____________________\nRobot owner : @MohammadNBG And @Kiava\nBot Support Channel :\n @KiavaTeam :)'
+			local text = '<b>⚙Directory Settings SuperGroup:</b>\n____________________\n📕To view the locking settings for setting up a super group submit the following words\n📂 #options lock\n____________________\n📕To view the switch settings and operation modes corresponding to the settings robot Svprgrvh submit the following words\n📂#options more\n____________________\n📕To view the General Settings section of the Settings Super Group to submit the following statement\n📂#options general\n____________________\nRobot owner : @AliReza_PT\nBot Support Channel :\n @Create_AntiSpam_Bot :)'
 			send_large_msg('user#id'..msg.from.id, text.."\n", ok_cb, false)
            return "<b>ℹ️Guide your player was sent to a private group settings</b>(EN)"
 			end
@@ -6412,7 +6412,6 @@ redis:set(alirezapt7, matches[7])
 local alireza = "🔖یوزرنیم های ارسالی با موفقیت ذخیره گردید"
 return reply_msg(msg.id, alireza, ok_cb, false)
 end
-
 if matches[1]:lower() == "clean userchannels" then
 local alirezapt2 = "userchannel2"..msg.from.id
 local alirezapt3 = "userchannel3"..msg.from.id
@@ -6429,7 +6428,6 @@ redis:del(alirezapt7)
 local alireza = " یوزرنیم های ذخیره شده با موفقیت حذف گردید!"
 return reply_msg(msg.id, alireza, ok_cb, false)
 end
-
 if matches[1] == "userchannels" then
 local alirezapt2 = "userchannel2"..msg.from.id
 local alirezapt3 = "userchannel3"..msg.from.id
@@ -6456,7 +6454,6 @@ redis:set(alirezapt5, matches[5])
 local alireza = "🔖یوزرنیم و لینک ارسالی با موفقیت بروزرسانی شد\nبرای نمایش عبارت /channel group را ارسال کنید"
 return reply_msg(msg.id, alireza, ok_cb, false)
 end
-
 if matches[1] == "clean channelgroup" then
 local alirezapt2 = "userchannel2"..msg.from.id
 local alirezapt3 = "userchannel3"..msg.from.id
@@ -6469,7 +6466,6 @@ redis:del(alirezapt5)
 local alireza = " یوزرنیم و لینک ذخیره شده با موفقیت حذف گردید"
 return reply_msg(msg.id, alireza, ok_cb, false)
 end
-
 if matches[1] == "channel group" then
 local alirezapt2 = "userchannel2"..msg.from.id
 local alirezapt3 = "userchannel3"..msg.from.id
@@ -6486,7 +6482,7 @@ if matches[1]:lower() == 'leave' and matches[2] and is_sudo(msg) then
 local data = load_data(_config.moderation.data)
 local group_name = data[tostring(matches[2])]['settings']['set_name']
 leave_channel("channel#id"..matches[2], ok_cb, false)
-return reply_msg(msg.id, "》 <i> ربات </i> [ @KiavaBOT ] <i> با موفقیت از سوپرگروه </i> [<b>"..group_name.."</b>] <i> خارج گردید </i>", ok_cb, false)
+return reply_msg(msg.id, "》 <i> ربات </i> [ @TGSecurityBOT ] <i> با موفقیت از سوپرگروه </i> [<b>"..group_name.."</b>] <i> خارج گردید </i>", ok_cb, false)
 end
 ----------------------
 		if matches[1]:lower() == "invite" and is_sudo(msg) then
@@ -8374,4 +8370,4 @@ return {
   muteallgroup = muteallgroup
 }
 --End supergrpup.lua
---By @MohammadNBG
+--By @alireza_PT
