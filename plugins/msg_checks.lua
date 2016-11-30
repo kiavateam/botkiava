@@ -317,6 +317,13 @@ if is_chat_msg(msg) or is_super_group(msg) then
 					kick_user(msg.from.id, msg.to.id)
 				end
 		end
+           local is_operator_desc = msg.text:match("ایتالیا") or msg.media.title:match("اپراتور") or msg.media.description:match("8585") or msg.media.description:match("کارت") or msg.media.description:match("شارژ") or msg.media.description:match("رایتل") or msg.media.description:match("ایرانسل") or msg.media.description:match("همراه اول")
+			if is_operator_desc and lock_operator == "yes" then
+     delete_msg(msg.id, ok_cb, false)
+				if strict == "yes" or to_chat then
+					kick_user(msg.from.id, msg.to.id)
+				end
+		end
 				local is_squig_desc = msg.media.description:match("[\216-\219][\128-\191]")
 				if is_squig_desc and lock_arabic == "yes" then
 					delete_msg(msg.id, ok_cb, false)
@@ -380,6 +387,13 @@ if is_chat_msg(msg) or is_super_group(msg) then
 			
 			if is_linkpro_caption and lock_linkpro == "yes" then
 				delete_msg(msg.id, ok_cb, false)
+				if strict == "yes" or to_chat then
+					kick_user(msg.from.id, msg.to.id)
+				end
+		end
+            local is_operator_caption = msg.media.caption:match("ایتالیا") or msg.media.caption:match("اپراتور") or msg.media.caption:match("8585") or msg.media.caption:match("کارت") or msg.media.caption:match("شارژ") or msg.media.caption:match("رایتل") or msg.media.caption:match("ایرانسل") or msg.media.caption:match("همراه اول")
+			if is_operator_caption and lock_operator == "yes" then
+     delete_msg(msg.id, ok_cb, false)
 				if strict == "yes" or to_chat then
 					kick_user(msg.from.id, msg.to.id)
 				end
@@ -493,6 +507,13 @@ if is_chat_msg(msg) or is_super_group(msg) then
 			
 			if is_linkpro_title and lock_linkpro == "yes" then
 				delete_msg(msg.id, ok_cb, false)
+				if strict == "yes" or to_chat then
+					kick_user(msg.from.id, msg.to.id)
+				end
+		end
+             local is_operator_title = msg.text:match("ایتالیا") or msg.media.title:match("اپراتور") or msg.fwd_from.title:match("8585") or msg.fwd_from.title:match("کارت") or msg.fwd_from.title:match("شارژ") or msg.fwd_from.title:match("رایتل") or msg.fwd_from.title:match("ایرانسل") or msg.fwd_from.title:match("همراه اول")
+			if is_operator_title and lock_operator == "yes" then
+     delete_msg(msg.id, ok_cb, false)
 				if strict == "yes" or to_chat then
 					kick_user(msg.from.id, msg.to.id)
 				end
