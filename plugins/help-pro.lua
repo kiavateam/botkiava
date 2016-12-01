@@ -239,7 +239,7 @@ local mods = [[
  
  local member = [[
  
- ℹ️راهنمای فارسی کاربران عادی(Security BOT):
+ ℹ️راهنمای فارسی کاربران عادی(Kiava BOT):
  
  
  > <b>[!/#]infome</b>
@@ -284,14 +284,14 @@ local mods = [[
         return reply_msg(msg.id, member, ok_cb, false)
         end
 end
- if msg.to.type == 'channel' and matches[1]:lower() == 'help' and matches[2]:lower() == 'owner' then
+ if msg.to.type == 'channel' and matches[1]:lower() == 'help' then
      if is_owner(msg) then 
          return reply_msg(msg.id, owner, ok_cb, false)
     else return  reply_msg(msg.id, '<code>ℹ️فقط مدیر مجاز به مشاهده راهنما است</code>', ok_cb, false)
     end 
 end
 
- if msg.to.type == 'channel' and matches[1]:lower() == 'help' and matches[2]:lower() == 'mod' then
+ if msg.to.type == 'channel' and matches[1]:lower() == 'help' then
      if is_momod(msg) then 
          return reply_msg(msg.id, mods, ok_cb, false)
     else return reply_msg(msg.id, '<code>ℹ️فقط مالک گروه مجاز به مشاهده راهنما است</code>', ok_cb, false)
@@ -333,7 +333,7 @@ if msg.to.type == 'channel' and matches[1]:lower() == 'help' and matches[2]:lowe
     end 
 end
 
- if msg.to.type == 'channel' and matches[1]:lower() == 'help' and matches[2]:lower() == 'member' then
+ if msg.to.type == 'channel' and matches[1]:lower() == 'help' then
          return reply_msg(msg.id, member, ok_cb, false)
     end 
 end
