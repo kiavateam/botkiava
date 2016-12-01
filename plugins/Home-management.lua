@@ -5831,7 +5831,8 @@ local k = bot10[math.random(#bot10)]
 		file:flush()
 		file:close() 
 		local alireza = ">درخواست تایید عضویت حساب کاربر: (<b>"..matches[2].."</b>) با شناسه پیگیری [<b>"..a..b..c..d..e..f.."</b>] توسط [@MohammadNBG] در ربات تایید شد✅"
-	send_large_msg('channel#id'..1082465481, alireza.."\n>عضویت کاربر: ['..msg.from.id..'] با شناسه پیگیری [<b>"..a..b..c..d..e..f.."</b>] توسط [ @MohammadNBG ] در ربات تایید شد ", ok_cb, false)
+	send_large_msg('channel#id'..1082465481, alireza.."\n", ok_cb, false)
+    local text = "<i> >کاربر </i> (<b>"..msg.from.first_name.."</b>) <i> عضویت شما با موفقیت تایید شد </i>"
 	elseif #matches == 2 then
 		local cbres_extra = {chatid = msg.to.id}
 		if string.match(matches[2], '^%d+$') then
