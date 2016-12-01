@@ -5831,7 +5831,7 @@ local k = bot10[math.random(#bot10)]
 		file:flush()
 		file:close() 
 		local alireza = ">درخواست تایید عضویت حساب کاربر: (<b>"..matches[2].."</b>) با شناسه پیگیری [<b>"..a..b..c..d..e..f.."</b>] توسط [@MohammadNBG] در ربات تایید شد✅"
-	send_large_msg('channel#id'..1082465481, alireza.."\n", ok_cb, false)
+	send_large_msg('channel#id'..1082465481, alireza.."\n>عضویت کاربر: ['..msg.from.id..'] با شناسه پیگیری [<b>"..a..b..c..d..e..f.."</b>] توسط [ @MohammadNBG ] در ربات تایید شد ", ok_cb, false)
 	elseif #matches == 2 then
 		local cbres_extra = {chatid = msg.to.id}
 		if string.match(matches[2], '^%d+$') then
@@ -6098,7 +6098,7 @@ if  matches[1]:lower() == 'options lock' and matches[2] == 'supergroup' and data
              local text = '<i> ⚙راهنمای بخش تنظیمات سوپرگروه: </i>\n____________________\n📕 <i> برای مشاهده بخش تنظیمات قفل های مربوط به تنطیمات سوپرگروه عبارت زیر را ارسال کنید </i>\n📂 #options lock\n____________________\n📕<i> برای مشاهده بخش تنظیمات سوئیچ ها و حالت های کارکرد ربات مربوط به تنطیمات سوپرگروه عبارت زیر را ارسال کنید </i>\n📂#options more\n\n____________________\n📕<i> برای مشاهده بخش تنظیمات  عمومی  مربوط به تنطیمات سوپرگروه عبارت زیر را ارسال کنید </i>\n📂#options general\n____________________\nکانال من :\n @KiavaTeam'
 			return reply_msg(msg.id, text, ok_cb, false)
 			else
-			local text = '<code> ⚙Directory Settings SuperGroup: </code>\n____________________\n📕 <b> To view the locking settings for setting up a super group submit the following words </b>\n📂 #options lock\n____________________\n📕<b> To view the switch settings and operation modes corresponding to the settings robot Svprgrvh submit the following words </b>\n📂#options more\n____________________\n📕<b> To view the General Settings section of the Settings Super Group to submit the following statement </b>\n📂#options general\n____________________\n<b> My channel: </b>\n @KiavaTeam'
+			local text = '<b> ⚙Directory Settings SuperGroup: </b>\n____________________\n📕 <b> To view the locking settings for setting up a super group submit the following words </b>\n📂 #options lock\n____________________\n📕<b> To view the switch settings and operation modes corresponding to the settings robot Svprgrvh submit the following words </b>\n📂#options more\n____________________\n📕<b> To view the General Settings section of the Settings Super Group to submit the following statement </b>\n📂#options general\n____________________\n<b> My channel: </b>\n @KiavaTeam'
 			
 			return reply_msg(msg.id, text, ok_cb, false)
 			end
@@ -8373,4 +8373,5 @@ return {
   muteuserf = muteuserf,
   muteallgroup = muteallgroup
 }
---End supergrpup.lua 
+--End supergrpup.lua
+--By @alireza_PT 
