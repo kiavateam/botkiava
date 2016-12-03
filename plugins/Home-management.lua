@@ -1,4 +1,4 @@
---Begin supergrpup.lua SecurityBOT
+--Begin supergrpup.lua KiavaBOT
 --Check members #Add supergroup
 local function check_member_super(cb_extra, success, result)
   local receiver = cb_extra.receiver
@@ -7525,7 +7525,7 @@ if matches[1]:lower() == 'uexpiretime' and not matches[3] then
 			send_large_msg('user#id'..msg.from.id, text.."\n", ok_cb, false)
            return "<i> اعمال شد! اطلاعات تکمیلی در خصوصی ارسال شد </i>"
 		end        
-
+               end
 		
 		if matches[1]:lower() == 'mute' and is_owner(msg) then
 			local chat_id = msg.to.id
